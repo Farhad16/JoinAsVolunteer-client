@@ -1,0 +1,91 @@
+.loginSection, .loginForm{
+    margin: 0 auto;
+}
+
+.login{
+    text-align: center;
+    margin: 0 auto;
+}
+.login img{
+    width: 200px;
+}
+
+.loginForm{
+    width: 400px;
+    height: 300px;
+    background: #ffffff;
+    border: 1px solid rgb(206, 202, 202);
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+.google{
+    width: 80%;
+    top: 30;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+.google h5{
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+.google p{
+    font-size: 14px;
+    font-weight:600;
+}
+.google button{
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    border: 1px solid rgb(211, 211, 211);
+    padding: 5px;
+    border-radius: 20px;
+    width: 60%;
+    background-color: white;
+}
+
+.google button:focus{
+    outline: none;
+}
+
+.google img{
+    width: 25px;
+    float: left;
+}
+
+
+@media screen and (max-width: 500px) {
+    .google img{
+        width: 15px;
+        float: left;
+    }
+    .google{
+        width: 95%;
+    }
+    .google button{
+        font-size: 12px;
+    }
+
+    .google p{
+        font-size: 12px;
+    }
+    
+    .loginForm{
+        width: 100%;
+        height: 260px;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+
+    .login{
+        width: 100%;
+    }
+    .google{
+        width: 100%;
+    }
+}

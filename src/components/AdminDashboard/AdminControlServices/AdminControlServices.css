@@ -1,0 +1,26 @@
+.bg-white{
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.overflow-auto{
+    overflow-x:auto
+}
+
+.table-style td{
+    vertical-align: top;
+    width: 20%
+}
+
+.backColor{
+    background-color: #F5F6FA;
+}
+
+.table-style th{
+    padding: 10px;
+}
+
+.customerList{
+    background-color: #F4F7FC;
+    width: 100%;
+}

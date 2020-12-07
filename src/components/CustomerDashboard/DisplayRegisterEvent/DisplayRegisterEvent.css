@@ -1,0 +1,22 @@
+.order-list{
+    border: none;
+    border-radius: 10px;
+}
+
+.pending{
+    background-color:#FFE3E3;
+    border-radius: 5px;
+    color: red;
+}
+
+.onGoing{
+    background-color:#fff9ac;
+    border-radius: 5px;
+    color: rgb(253, 120, 31);
+}
+
+.done{
+    background-color:#C6FFE0;
+    border-radius: 5px;
+    color: #0cc261;
+}

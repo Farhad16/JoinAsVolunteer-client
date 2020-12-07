@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.nav-link{
+    color: #ffffff !important;
+    font-weight: 500;
+    transition: all .3s ease;
+}
+
+.navbar{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    background: #7F7F7F;
+    padding: 0 100px;
+}
+
+.nav-link:hover{
+    color: #F3C623 !important;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+
+.navbar-brand .name{
+    font-family: 'Pacifico', cursive;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.navbar-brand .angle{
+    color: #fda500;
+    font-size: 24px;
+}

@@ -1,0 +1,39 @@
+.sidebar{
+    height: 80vh;
+    background: #cecece;
+}
+.sidebar li{
+    margin-bottom: 1em;
+    font-size: 14px;
+}
+.sidebar li:hover span{
+    transform: translate(5px);
+    color: #ffffff;
+}
+
+.active{
+    color: #4DB47C !important;
+}
+
+@media screen and (max-width: 800px) {
+    .sidebar-logo{
+        display: none;
+    }
+
+    .sidebar li{
+       display: inline-block;
+       margin: 0 auto;
+    }
+    .sidebar{
+        height: 10vh;
+    }
+}
+
+
+
+@media screen and (max-width: 960px) {
+    .sidebar{
+        flex-direction: row;
+    }
+}
+
