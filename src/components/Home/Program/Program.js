@@ -6,7 +6,7 @@ import './Program.css'
 
 const Program = ({ program }) => {
 	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-	const { name, title, img, image } = program;
+	const { name, title, img, image, area } = program;
 
 	const setId = (title, img, image) => {
 		loggedInUser.title = title;
@@ -28,6 +28,14 @@ const Program = ({ program }) => {
 					<div className="m-3">
 						<h3 className="my-2 text-success">{name}</h3>
 						<h6 className="my-2 text-dark">{title}</h6>
+						<p className="my-2 text-dark ">
+							<small className="font-weight-bold">
+								Volunteer Location:{" "}
+								{
+									area.map((area, i) => <span key={i}>{area}{", "}</span>)
+								}
+							</small>
+						</p>
 						<button className="btn btn-success" onClick={() => setId(title, img, image)}>Register</button>
 					</div>
 				</Link>

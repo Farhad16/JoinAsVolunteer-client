@@ -7,18 +7,17 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './components/Home/Home/Home';
-import VolunteerRegister from './components/CustomerDashboard/VolunteerRegister/VolunteerRegister';
-import VolunteerAlreadyRegister from './components/CustomerDashboard/VolunteerAlreadyRegister/VolunteerAlreadyRegister';
 import AdminControlServices from './components/AdminDashboard/AdminControlPrograms/AdminControlPrograms';
 import AddService from './components/AdminDashboard/AddProgram/AddProgram';
 import MakeAdmin from './components/AdminDashboard/MakeAdmin/MakeAdmin';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import NotFound from './components/NotFound/NotFound';
 import Login from './components/Login/Login';
-import AccessPurposeAdmin from './components/AdminDashboard/AccessPurposeAdmin/AccessPurposeAdmin';
 import Navbar from './components/Home/Navbar/Navbar';
 import axios from 'axios';
 import Alert from './components/AdminDashboard/Alert/Alert';
+import VolunteerRegister from './components/VolunteerDashboard/VolunteerRegister/VolunteerRegister';
+import VolunteerAlreadyRegister from './components/VolunteerDashboard/VolunteerAlreadyRegister/VolunteerAlreadyRegister';
 
 
 export const UserContext = createContext()
@@ -33,7 +32,6 @@ function App() {
   useEffect(() => {
     axios.get(`http://localhost:5000/isAdmin/${email}`)
       .then(response => {
-        console.log(response);
         if (response.data.length > 0) {
           setAdmin(true);
         }
@@ -107,7 +105,7 @@ function App() {
             }
           </PrivateRoute>
           <Route path="/accessAdmin">
-            <AccessPurposeAdmin></AccessPurposeAdmin>
+            <MakeAdmin />
           </Route>
           <Route path="*">
             <NotFound></NotFound>

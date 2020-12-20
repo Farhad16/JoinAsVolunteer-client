@@ -28,13 +28,6 @@ const Sidebar = () => {
                             <FontAwesomeIcon icon={faHdd} />{" "}<span>Register Programs</span>
                         </Link>
                     </li>
-                    <li>
-                        <Link to="/customer/review"
-                            className={location.pathname === "/customer/review" ? "text-dark pl-3 active" : "text-dark pl-3"}
-                        >
-                            <FontAwesomeIcon icon={faListAlt} />{" "}<span>Suggestions</span>
-                        </Link>
-                    </li>
                 </div>
             </ul>
             <div className="pb-5">

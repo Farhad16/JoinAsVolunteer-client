@@ -1,11 +1,8 @@
-.addAdmin{
+.addAdmin {
     background-color: #fff;
     height: 300px;
 }
 
-input[type="file"] {
-    display: none;
-}
 .custom-file-upload {
     border: 1px solid #ccc;
     display: inline-block;
@@ -17,29 +14,30 @@ input[type="file"] {
     color: #000000;
 }
 
-.addServiceInput{
+.addServiceInput {
     width: 400px;
     padding: 10px 0px;
     border: none;
 }
 
 
-.decription-padding{
+.decription-padding {
     border-bottom: 1px solid rgb(223, 223, 223);
     padding-bottom: 60px
 }
 
-.titleInput{
+.titleInput {
     border-top: 1px solid rgb(223, 223, 223);
 
 }
-.btn-submit{
+
+.btn-submit {
     float: right;
 }
 
 
 @media screen and (max-width: 1100px) {
-    .addServiceInput{
+    .addServiceInput {
         width: 300px;
     }
 
@@ -47,11 +45,11 @@ input[type="file"] {
         padding: 4px 10px;
         font-size: 12px;
     }
-    
+
 }
 
 @media screen and (max-width: 915px) {
-    .addServiceInput{
+    .addServiceInput {
         width: 200px;
     }
 
@@ -59,11 +57,11 @@ input[type="file"] {
         padding: 4px 10px;
         font-size: 12px;
     }
-    
+
 }
 
 @media screen and (max-width: 760px) {
-    .addServiceInput{
+    .addServiceInput {
         width: 200px;
     }
 
@@ -71,12 +69,12 @@ input[type="file"] {
         padding: 4px 10px;
         font-size: 12px;
     }
-    
+
 }
 
 
 @media screen and (max-width: 575px) {
-    .addServiceInput{
+    .addServiceInput {
         width: 200px;
     }
 
@@ -85,5 +83,5 @@ input[type="file"] {
         font-size: 12px;
         margin-bottom: 20px;
     }
-    
+
 }
