@@ -1,9 +1,8 @@
-
-.register-form{
+.register-form {
     background-color: #CECECE;
 }
 
-.input-field{
+.input-field {
     padding: 10px 5px;
     width: 100%;
     border-radius: 5px;
@@ -13,30 +12,39 @@
 }
 
 
-::placeholder{
+::placeholder {
     color: #888888;
     font-size: 14px;
 }
-.project{
+
+.project {
     padding-bottom: 50px
 }
 
+
+.scroll-bhave {
+    scroll-behavior: smooth;
+    height: 90vh;
+    overflow: scroll;
+}
+
 @media screen and (max-width: 960px) {
-    .customerName{
-        display: none;
-    }
-    .orderTitle{
+    .customerName {
         display: none;
     }
 
-    ::placeholder{
+    .orderTitle {
+        display: none;
+    }
+
+    ::placeholder {
         font-size: 12px;
     }
 }
 
 
 
-.price-field{
+.price-field {
     padding: 10px;
     width: 48%;
     border-radius: 5px;

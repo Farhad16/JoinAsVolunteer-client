@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import Sidebar from '../../Shared/Sidebar/Sidebar';
+import AdminSidebar from '../../Shared/Sidebar/AdminSidebar';
 
 const MakeAdmin = () => {
     const { handleSubmit, register, errors } = useForm();
@@ -25,7 +25,7 @@ const MakeAdmin = () => {
         <div className="rightSide">
             <div className="row">
                 <div className="col-md-3">
-                    <Sidebar></Sidebar>
+                    <AdminSidebar></AdminSidebar>
                 </div>
                 <div className="col-md-7">
                     <nav className="navbar mr-auto d-flex justify-content-between">

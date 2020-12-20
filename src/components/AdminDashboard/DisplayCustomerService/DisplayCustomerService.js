@@ -1,8 +1,8 @@
 import React from 'react';
 import './DisplayCustomerService.css'
 
-const DisplayCustomerService = ({ service, i }) => {
-    const { name, orderName, projectDetails, email, status, _id } = service;
+const DisplayCustomerService = ({ register, handleCancelRegistration }) => {
+    const { title, displayName, email, status, _id } = register;
 
     const handleChangeStatus = (e, id) => {
         const status = { status: e.target.value }
@@ -22,32 +22,26 @@ const DisplayCustomerService = ({ service, i }) => {
 
     return (
         <tr>
-            <td>{name}</td>
+            <td>{displayName}</td>
             <td>{email}</td>
-            <td>{orderName}</td>
-            <td>{projectDetails}</td>
+            <td>{title}</td>
             <td className="pl-3">
                 {
                     status === 'Pending' ?
                         <select className="form-control text-danger border-0" onChange={(event) => { handleChangeStatus(event, _id) }}>
                             <option className="status-pending" value={status}>{status}</option>
-                            <option className="status-ongoing" value="On going">On going</option>
                             <option className="status-done" value="Done">Done</option>
                         </select>
-                        : (
-                            status === 'Done' ? <select className="form-control text-success border-0" onChange={(event) => { handleChangeStatus(event, _id) }}>
-                                <option className="status-done" value={status}>{status}</option>
-                                <option className="status-ongoing" value="On going">On going</option>
-                                <option className="status-pending" value="Pending">Pending</option>
-                            </select>
-                                :
-                                <select className="form-control text-warning border-0" onChange={(event) => { handleChangeStatus(event, _id) }}>
-                                    <option className="status-ongoing" value={status}>{status}</option>
-                                    <option className="status-pending" value="Pending">Pending</option>
-                                    <option className="status-done" value="Done">Done</option>
-                                </select>
-                        )
+                        :
+                        <select className="form-control text-success border-0" onChange={(event) => { handleChangeStatus(event, _id) }}>
+                            <option className="status-done" value={status}>{status}</option>
+                            <option className="status-pending" value="Pending">Pending</option>
+                        </select>
+
                 }
+            </td>
+            <td>
+                <button className="btn btn-warning" onClick={() => { handleCancelRegistration(_id) }}>Cancel</button>
             </td>
         </tr>
     );

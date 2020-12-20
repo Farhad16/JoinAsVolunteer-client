@@ -14,15 +14,14 @@ const PrivateRoute = ({ children, ...rest }) => {
         }
         const decodedToken = jwt_decode(token);
 
-        const tokenSecret = {};
+        const tokenSecret = { ...loggedInUser };
         tokenSecret.email = decodedToken.email;
         tokenSecret.displayName = decodedToken.name;
         tokenSecret.photoURL = decodedToken.picture;
 
         setLoggedInUser(tokenSecret)
 
-        const currentTime = new Date().getTime() / 1000;
-        return decodedToken.exp > currentTime;
+        return tokenSecret.email;
     }
 
     return (

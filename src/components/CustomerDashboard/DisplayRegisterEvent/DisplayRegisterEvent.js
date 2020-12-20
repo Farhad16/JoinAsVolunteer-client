@@ -1,19 +1,33 @@
 import React from 'react';
-import './DisplayRegisterEvent.css'
+import './DisplayRegisterEvent.css';
 
-const DisplayRegisterEvent = ({ service }) => {
-    const { orderName, projectDetails, image, status } = service;
+
+const DisplayRegisterEvent = ({ program, handleCancelRegistration }) => {
+    const { title, image, status, img, _id } = program;
 
     return (
         <div className="col-md-4 mb-5">
-            <div className="card order-list mb-3 h-100" style={{ maxWidth: "18rem" }}>
+            <div className="card program-list mb-3 h-100" style={{ maxWidth: "18rem" }}>
                 <div className="card-body">
-                    <div className="d-flex align-items-center justify-content-between mb-2">
-                        <img className="rounded-circle mr-3" src={`data:image/png;base64,${image.img}`} alt="" width="50px" height="50px" />
-                        <h6 className="mr-3"><small className={status === 'Pending' ? "pending  px-3 py-2" : (status === 'Done' ? "done px-3 py-2" : "onGoing px-3 py-2")}>{status}</small></h6>
+                    <div className="d-flex align-items-center">
+                        {
+                            image
+                                ? <img className="mr-3" src={`data:image/png;base64,${image.img}`} alt="not found" width="100%" height="150px" />
+                                : <img className="mr-3" src={require(`../../images/${img}`)} alt="not found" width="100%" height="150px" />
+                        }
                     </div>
-                    <h5 className="card-text">{orderName}</h5>
-                    <p className="card-text"><small>{projectDetails}</small> </p>
+                    <h6 className="card-text mt-2"> <span className="text-success">Program:</span> {title}</h6>
+                    <p className="mt-3 d-flex justify-content-between">
+                        <small className="font-weight-bold mr-3">Register Status: </small>
+                        <small className={status === 'Pending' ? "pending  px-3 py-2" : (status === 'Done' ? "done px-3 py-2" : "onGoing px-3 py-2")}>
+                            {status}
+                        </small>
+                    </p>
+                    {
+                        status === 'Pending' ?
+                            <button className="btn btn-warning" onClick={() => handleCancelRegistration(_id)}>Cancel</button>
+                            : " "
+                    }
                 </div>
             </div>
         </div>

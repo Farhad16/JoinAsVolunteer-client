@@ -5,32 +5,35 @@ import './Program.css'
 
 
 const Program = ({ program }) => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+	const { name, title, img, image } = program;
 
-    const setId = (title) => {
-        loggedInUser.title = title;
-    }
+	const setId = (title, img, image) => {
+		loggedInUser.title = title;
+		loggedInUser.img = img;
+		loggedInUser.image = image;
+	}
 
-    const { name, title, img, image } = program;
-    return (
-        <div className="col-md-4 col-sm-6 col-12 col-lg-4">
-            <Link to="volunteer/register" onClick={() => setId(title)}>
-                <div className="service p-3 h-100 mb-3">
-                    <div className="m-3">
-                        {
-                            image ? <img className="img-style" src={`data:image/png;base64,${image.img}`} alt="" />
-                                :
-                                <img className="img-style" src={require(`../../images/${img}`)} alt="" />
-                        }
-                    </div>
-                    <div className="m-3">
-                        <h3 className="my-2 text-success">{name}</h3>
-                        <h6 className="my-2 text-dark">{title}</h6>
-                    </div>
-                </div>
-            </Link>
-        </div>
-    );
+	return (
+		<div className="col-md-4 col-sm-6 col-12 col-lg-4">
+			<div className="program p-3 h-100">
+				<Link to="volunteer/register" onClick={() => setId(title, img, image)}>
+					<div className="m-3">
+						{
+							image ? <img className="img-style" src={`data:image/png;base64,${image.img}`} alt="" />
+								:
+								<img className="img-style" src={require(`../../images/${img}`)} alt="" />
+						}
+					</div>
+					<div className="m-3">
+						<h3 className="my-2 text-success">{name}</h3>
+						<h6 className="my-2 text-dark">{title}</h6>
+						<button className="btn btn-success" onClick={() => setId(title, img, image)}>Register</button>
+					</div>
+				</Link>
+			</div>
+		</div>
+	);
 };
 
 export default Program;

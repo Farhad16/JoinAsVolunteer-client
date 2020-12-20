@@ -1,0 +1,27 @@
+.fontSize {
+    font-size: 14px;
+}
+
+.overflow-auto {
+    overflow-x: auto
+}
+
+.table-style td {
+    vertical-align: top;
+    width: 20%
+}
+
+.backColor {
+    background-color: #c4c4c4;
+}
+
+.table-style th {
+    padding: 10px;
+}
+
+
+.scroll-bhave {
+    scroll-behavior: smooth;
+    height: 90vh;
+    overflow: scroll;
+}

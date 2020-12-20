@@ -7,24 +7,40 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './components/Home/Home/Home';
-import CustomerOrder from './components/CustomerDashboard/VolunteerRegister/VolunteerRegister';
-import CustomerServiceList from './components/CustomerDashboard/VolunteerAlreadyRegister/VolunteerAlreadyRegister';
-import AdminControlServices from './components/AdminDashboard/AdminControlServices/AdminControlServices';
-import AddService from './components/AdminDashboard/AddService/AddService';
+import VolunteerRegister from './components/CustomerDashboard/VolunteerRegister/VolunteerRegister';
+import VolunteerAlreadyRegister from './components/CustomerDashboard/VolunteerAlreadyRegister/VolunteerAlreadyRegister';
+import AdminControlServices from './components/AdminDashboard/AdminControlPrograms/AdminControlPrograms';
+import AddService from './components/AdminDashboard/AddProgram/AddProgram';
 import MakeAdmin from './components/AdminDashboard/MakeAdmin/MakeAdmin';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import NotFound from './components/NotFound/NotFound';
 import Login from './components/Login/Login';
 import AccessPurposeAdmin from './components/AdminDashboard/AccessPurposeAdmin/AccessPurposeAdmin';
 import Navbar from './components/Home/Navbar/Navbar';
+import axios from 'axios';
+import AdminAlert from './components/AdminDashboard/AdminAlert/AdminAlert';
 
 
 export const UserContext = createContext()
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({
-    title: ''
-  });
+  const [loggedInUser, setLoggedInUser] = useState({});
+  const [isAdmin, setIsAdmin] = useState(false);
+  const email = loggedInUser.email;
+
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/isAdmin/${email}`)
+      .then(response => {
+        console.log(response);
+        if (response.data.length > 0) {
+          setIsAdmin(true);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }, [email]);
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
@@ -38,12 +54,28 @@ function App() {
             <Login />
           </Route>
           <PrivateRoute path="/volunteer/register">
-            <CustomerOrder />
-          </PrivateRoute>
-          <PrivateRoute path="/view/registration">
-            <CustomerServiceList />
+            {
+              isAdmin ?
+                < AdminAlert />
+                :
+                <VolunteerRegister />
+
+            }
+
           </PrivateRoute>
 
+          <PrivateRoute path="/dashboard">
+            {
+              isAdmin ?
+                < AdminControlServices />
+                :
+                <VolunteerAlreadyRegister />
+
+            }
+          </PrivateRoute>
+          <PrivateRoute path="/view/registration">
+            <VolunteerAlreadyRegister />
+          </PrivateRoute>
           <PrivateRoute path="/admin/controlService">
             <AdminControlServices />
           </PrivateRoute>
@@ -62,7 +94,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </UserContext.Provider>
+    </UserContext.Provider >
   );
 }
 

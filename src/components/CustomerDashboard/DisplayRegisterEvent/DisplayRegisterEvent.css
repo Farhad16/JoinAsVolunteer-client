@@ -1,22 +1,32 @@
-.order-list{
+.program-list {
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
-.pending{
-    background-color:#FFE3E3;
+.card-body {
+    padding-bottom: .5rem !important;
+}
+
+.pending {
+    background-color: #FFE3E3;
     border-radius: 5px;
     color: red;
 }
 
-.onGoing{
-    background-color:#fff9ac;
+.onGoing {
+    background-color: #fff9ac;
     border-radius: 5px;
     color: rgb(253, 120, 31);
 }
 
-.done{
-    background-color:#C6FFE0;
+.done {
+    background-color: #C6FFE0;
     border-radius: 5px;
     color: #0cc261;
+}
+
+.btn {
+    padding: 0.275rem 0.5rem !important;
+    font-size: 14px;
+    margin: 0;
 }

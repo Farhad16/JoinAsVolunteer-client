@@ -1,11 +1,11 @@
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import Sidebar from '../../Shared/Sidebar/Sidebar';
-import './AddAdmin.css';
+import AdminSidebar from '../../Shared/Sidebar/AdminSidebar';
+import './AddProgram.css';
 
 
-const AddService = () => {
+const AddProgram = () => {
     const [serviceInfo, setServiceInfo] = useState({});
     const [file, setFile] = useState(null);
 
@@ -45,7 +45,7 @@ const AddService = () => {
         <div className="rightSide">
             <div className="row">
                 <div className="col-md-3">
-                    <Sidebar></Sidebar>
+                    <AdminSidebar></AdminSidebar>
                 </div>
                 <div className="col-md-9">
                     <nav className="navbar mr-auto d-flex justify-content-between">
@@ -79,4 +79,4 @@ const AddService = () => {
     );
 };
 
-export default AddService;
+export default AddProgram;
