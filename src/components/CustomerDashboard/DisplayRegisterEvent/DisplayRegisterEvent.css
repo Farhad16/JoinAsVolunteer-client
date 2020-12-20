@@ -8,15 +8,15 @@
 }
 
 .pending {
-    background-color: #FFE3E3;
-    border-radius: 5px;
-    color: red;
-}
-
-.onGoing {
     background-color: #fff9ac;
     border-radius: 5px;
     color: rgb(253, 120, 31);
+}
+
+.cancel {
+    background-color: #FFE3E3;
+    border-radius: 5px;
+    color: red;
 }
 
 .done {
@@ -29,4 +29,8 @@
     padding: 0.275rem 0.5rem !important;
     font-size: 14px;
     margin: 0;
+}
+
+.cancelled{
+    text-decoration:line-through
 }

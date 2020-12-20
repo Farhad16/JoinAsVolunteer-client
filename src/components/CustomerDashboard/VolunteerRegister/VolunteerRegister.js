@@ -64,7 +64,7 @@ const VolunteerRegister = () => {
 							<input type="text" name="date" placeholder="Date" defaultValue={event.date} onBlur={handleBlur} className="input-field mb-3" required /><br />
 							<input type="text" name="phone" placeholder="Phone" onBlur={handleBlur} className="input-field mb-3" required /><br />
 							<input type="Address" name="address" placeholder="Address" onBlur={handleBlur} className="input-field mb-3" required /><br />
-							<button className="btn btn-outline-success mt-2" type="submit">Send</button>
+							<button className="btn btn-outline-success mt-2" type="submit">Register</button>
 						</form>
 					</div>
 				</div>

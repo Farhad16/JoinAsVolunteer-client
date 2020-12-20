@@ -3,7 +3,7 @@ import './DisplayRegisterEvent.css';
 
 
 const DisplayRegisterEvent = ({ program, handleCancelRegistration }) => {
-    const { title, image, status, img, _id } = program;
+    const { title, image, status, img, _id, cancel } = program;
 
     return (
         <div className="col-md-4 mb-5">
@@ -19,14 +19,17 @@ const DisplayRegisterEvent = ({ program, handleCancelRegistration }) => {
                     <h6 className="card-text mt-2"> <span className="text-success">Program:</span> {title}</h6>
                     <p className="mt-3 d-flex justify-content-between">
                         <small className="font-weight-bold mr-3">Register Status: </small>
-                        <small className={status === 'Pending' ? "pending  px-3 py-2" : (status === 'Done' ? "done px-3 py-2" : "onGoing px-3 py-2")}>
-                            {status}
-                        </small>
+                        {
+                            <small className={status === 'Pending' ? "pending  px-3 py-2" : (status === 'Done' ? "done px-3 py-2" : "cancel px-3 py-2")}>
+                                {
+                                    <span className={status === 'Cancelled' ? "cancelled" : ""}>{status}</span>
+                                }
+                            </small>
+                        }
                     </p>
                     {
-                        status === 'Pending' ?
-                            <button className="btn btn-warning" onClick={() => handleCancelRegistration(_id)}>Cancel</button>
-                            : " "
+                        status === 'Done' ? " "
+                            : <button className="btn btn-warning" onClick={() => handleCancelRegistration(_id)}>Remove</button>
                     }
                 </div>
             </div>

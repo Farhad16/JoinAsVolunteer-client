@@ -30,14 +30,33 @@ const AdminControlServices = () => {
 			})
 	}, [email, requestData]);
 
+	const handleChangeStatus = (event, id) => {
+		const status = event.target.value;
 
-	const handleCancelRegistration = (id) => {
-		const url = `http://localhost:5000/cancelRegistration/${id}`
-		axios.patch(url)
+		const url = `http://localhost:5000/changeStatus`
+		axios.patch(url, {
+			changeStatus: {
+				status: status,
+				id: id
+			}
+		})
+			.then(response => {
+				if (response.data) {
+					alert("Status Changed");
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			})
+	}
+
+	const handleDeleteRegistration = (id) => {
+		const url = `http://localhost:5000/deleteRegistration/${id}`
+		axios.delete(url)
 			.then(response => {
 				console.log(response);
 				if (response.status === 200) {
-					alert("Registration cancel successfully");
+					alert("Registration Delete successfully");
 					setRequestData(new Date())
 				}
 			})
@@ -62,13 +81,17 @@ const AdminControlServices = () => {
 									<th scope="col">Email ID</th>
 									<th scope="col">Program Name</th>
 									<th scope="col" className="pl-3">Status</th>
-									<th scope="col" className="pl-3">Cancel</th>
+									<th scope="col" className="pl-3">Delete</th>
 								</tr>
 							</thead>
 							<tbody>
 								{
 									registerData.length ? registerData.map((register, i) =>
-										< DisplayCustomerService key={i} register={register} handleCancelRegistration={handleCancelRegistration} />)
+										< DisplayCustomerService
+											key={i} register={register}
+											handleChangeStatus={handleChangeStatus}
+											handleDeleteRegistration={handleDeleteRegistration}
+										/>)
 										: (
 											empty ? <h4>There is no registered volunteer</h4> :
 												<div className="col-md-12 d-flex justify-content-center">

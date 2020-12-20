@@ -18,29 +18,30 @@ import Login from './components/Login/Login';
 import AccessPurposeAdmin from './components/AdminDashboard/AccessPurposeAdmin/AccessPurposeAdmin';
 import Navbar from './components/Home/Navbar/Navbar';
 import axios from 'axios';
-import AdminAlert from './components/AdminDashboard/AdminAlert/AdminAlert';
+import Alert from './components/AdminDashboard/Alert/Alert';
 
 
 export const UserContext = createContext()
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [admin, setAdmin] = useState(false);
   const email = loggedInUser.email;
 
+  const [time, setTime] = useState(new Date());
 
   useEffect(() => {
     axios.get(`http://localhost:5000/isAdmin/${email}`)
       .then(response => {
         console.log(response);
         if (response.data.length > 0) {
-          setIsAdmin(true);
+          setAdmin(true);
         }
       })
       .catch(function (error) {
         console.log(error);
       })
-  }, [email]);
+  }, [email, time])
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
@@ -55,18 +56,17 @@ function App() {
           </Route>
           <PrivateRoute path="/volunteer/register">
             {
-              isAdmin ?
-                < AdminAlert />
+              admin ?
+                < Alert />
                 :
                 <VolunteerRegister />
 
             }
 
           </PrivateRoute>
-
           <PrivateRoute path="/dashboard">
             {
-              isAdmin ?
+              admin ?
                 < AdminControlServices />
                 :
                 <VolunteerAlreadyRegister />
@@ -74,18 +74,38 @@ function App() {
             }
           </PrivateRoute>
           <PrivateRoute path="/view/registration">
-            <VolunteerAlreadyRegister />
+            {
+              admin ?
+                < Alert />
+                :
+                <VolunteerAlreadyRegister />
+
+            }
           </PrivateRoute>
           <PrivateRoute path="/admin/controlService">
-            <AdminControlServices />
+            {
+              admin ?
+                <AdminControlServices />
+                : <Alert />
+
+            }
           </PrivateRoute>
           <PrivateRoute path="/admin/addService">
-            <AddService></AddService>
+            {
+              admin ?
+                <AddService></AddService>
+                : <Alert />
+
+            }
           </PrivateRoute>
           <PrivateRoute path="/admin/makeAdmin">
-            <MakeAdmin></MakeAdmin>
-          </PrivateRoute>
+            {
+              admin ?
+                <MakeAdmin />
+                : <Alert />
 
+            }
+          </PrivateRoute>
           <Route path="/accessAdmin">
             <AccessPurposeAdmin></AccessPurposeAdmin>
           </Route>

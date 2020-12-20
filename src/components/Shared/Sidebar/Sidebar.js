@@ -23,7 +23,7 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <Link to="/view/registration"
-                            className={(location.pathname === "/view/registration") ? "text-dark pl-3 active" : "text-dark pl-3"}
+                            className={(location.pathname === "/view/registration" || location.pathname === "/dashboard") ? "text-dark pl-3 active" : "text-dark pl-3"}
                         >
                             <FontAwesomeIcon icon={faHdd} />{" "}<span>Register Programs</span>
                         </Link>
