@@ -16,7 +16,7 @@ const AdminControlRegistration = () => {
 
 
 	useEffect(() => {
-		axios.get(`http://localhost:5000/register/${email}`)
+		axios.get(`https://mighty-shelf-41443.herokuapp.com/register/${email}`)
 			.then(response => {
 				if (response.data) {
 					setRegisterData(response.data);
@@ -33,7 +33,7 @@ const AdminControlRegistration = () => {
 	const handleChangeStatus = (event, id) => {
 		const status = event.target.value;
 
-		const url = `http://localhost:5000/changeStatus`
+		const url = `https://mighty-shelf-41443.herokuapp.com/changeStatus`
 		axios.patch(url, {
 			changeStatus: {
 				status: status,
@@ -51,7 +51,7 @@ const AdminControlRegistration = () => {
 	}
 
 	const handleDeleteRegistration = (id) => {
-		const url = `http://localhost:5000/deleteRegistration/${id}`
+		const url = `https://mighty-shelf-41443.herokuapp.com/deleteRegistration/${id}`
 		axios.delete(url)
 			.then(response => {
 				console.log(response);

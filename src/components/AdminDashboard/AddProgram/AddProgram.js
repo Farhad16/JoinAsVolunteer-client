@@ -31,7 +31,7 @@ const AddProgram = () => {
 		formData.append('description', programInfo.description);
 		formData.append('area', programInfo.area);
 
-		fetch('http://localhost:5000/addProgram', {
+		fetch('https://mighty-shelf-41443.herokuapp.com/addProgram', {
 			method: 'POST',
 			body: formData
 		})

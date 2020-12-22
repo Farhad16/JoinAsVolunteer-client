@@ -8,7 +8,7 @@ const MakeAdmin = () => {
 
 
 	const onSubmit = (data, e) => {
-		axios.post('http://localhost:5000/makeAdmin', {
+		axios.post('https://mighty-shelf-41443.herokuapp.com/makeAdmin', {
 			adminEmail: data
 		}).then(response => {
 			console.log(response);

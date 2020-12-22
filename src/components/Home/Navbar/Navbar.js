@@ -68,6 +68,11 @@ const Navbar = () => {
 								<img className="rounded-circle" src={loggedInUser.photoURL} width="40px" height="40px" alt="" />
 							</li>
 						}
+
+						<li className="nav-item">
+							<a href="/accessAdmin" className="nav-link adminText">Admin</a>
+						</li>
+
 					</ul>
 				</div>
 			</nav >

@@ -22,6 +22,7 @@ import AdminControlProgram from './components/AdminDashboard/AdminControlProgram
 import Programs from './components/Home/Programs/Programs';
 import Footer from './components/Home/Footer/Footer';
 import ScrollToTop from "react-scroll-to-top";
+import AccessAdminPanel from './components/AdminDashboard/AccessAdminPanel/AccessAdminPanel';
 
 export const UserContext = createContext()
 
@@ -33,7 +34,7 @@ function App() {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/isAdmin/${email}`)
+    axios.get(`https://mighty-shelf-41443.herokuapp.com/isAdmin/${email}`)
       .then(response => {
         if (response.data.length > 0) {
           setAdmin(true);
@@ -117,7 +118,7 @@ function App() {
             }
           </PrivateRoute>
           <Route path="/accessAdmin">
-            <MakeAdmin />
+            <AccessAdminPanel />
           </Route>
           <Route path="/programs">
             <Programs />

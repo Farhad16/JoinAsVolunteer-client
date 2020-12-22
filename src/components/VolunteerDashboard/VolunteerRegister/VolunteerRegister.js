@@ -27,7 +27,7 @@ const VolunteerRegister = () => {
 	}
 
 	const onSubmit = (data, e) => {
-		axios.post('http://localhost:5000/register', {
+		axios.post('https://mighty-shelf-41443.herokuapp.com/register', {
 			eventRegister: eventRegister
 		}).then(response => {
 			console.log(response);

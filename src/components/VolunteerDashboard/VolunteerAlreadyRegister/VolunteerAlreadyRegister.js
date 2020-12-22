@@ -15,7 +15,7 @@ const VolunteerAlreadyRegister = () => {
 	const [requestData, setRequestData] = useState(new Date());
 
 	useEffect(() => {
-		axios.get(`http://localhost:5000/register/${email}`)
+		axios.get(`https://mighty-shelf-41443.herokuapp.com/register/${email}`)
 			.then(response => {
 				if (response.data) {
 					setRegisterData(response.data);
@@ -30,7 +30,7 @@ const VolunteerAlreadyRegister = () => {
 	}, [email, requestData]);
 
 	const handleCancelRegistration = (id) => {
-		const url = `http://localhost:5000/deleteRegistration/${id}`
+		const url = `https://mighty-shelf-41443.herokuapp.com/deleteRegistration/${id}`
 		axios.delete(url)
 			.then(response => {
 				console.log(response);
