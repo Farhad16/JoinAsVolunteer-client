@@ -6,3 +6,13 @@
 	border-color: #c0c3ca;
 	box-shadow: inset 0 1px 1px rgba(104, 103, 103, 0.075), 0 0 8px rgba(102, 106, 109, 0.6);
 }
+
+.center-block {
+  margin: auto;
+  display: block;
+}
+
+.parent {
+  display: grid;
+  place-items: center;
+}

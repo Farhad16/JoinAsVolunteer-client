@@ -1,52 +1,52 @@
-import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
 import AdminSidebar from '../../Shared/Sidebar/AdminSidebar';
 import './AddProgram.css';
-import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { UserContext } from '../../../App';
 
 
 const AddProgram = () => {
-	const [serviceInfo, setServiceInfo] = useState({});
+	const [programInfo, setProgramInfo] = useState({});
 	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
 	const [file, setFile] = useState(null);
-	const { handleSubmit, register, errors } = useForm();
 
 	const handleBlur = (e) => {
-		const newInfo = { ...serviceInfo }
+		const newInfo = { ...programInfo }
 		newInfo[e.target.name] = e.target.value;
-		setServiceInfo(newInfo)
+		setProgramInfo(newInfo)
 	}
+
 
 	const handleFileChange = (e) => {
 		const newFile = e.target.files[0];
+		console.log(newFile);
 		setFile(newFile)
 	}
 
-	const onSubmit = (data, e) => {
+	const handleSubmit = (e) => {
 		const formData = new FormData()
 		formData.append('file', file);
-		formData.append('title', serviceInfo.title);
-		formData.append('description', serviceInfo.description);
+		formData.append('name', programInfo.name);
+		formData.append('title', programInfo.title);
+		formData.append('description', programInfo.description);
+		formData.append('area', programInfo.area);
 
-		axios.post('http://localhost:5000/register', {
-			eventRegister: formData
-		}).then(response => {
-			console.log(response);
-			if (response.data === false) {
-				alert("You are already registered");
-				e.target.reset()
-			} else {
-				alert('Volunteer registration successfully done');
-				e.target.reset()
-			}
+		fetch('http://localhost:5000/addProgram', {
+			method: 'POST',
+			body: formData
 		})
-			.catch(function (error) {
-				console.log(error);
+			.then(response => response.json())
+			.then(data => {
+				if (data) {
+					alert("Program added successfully");
+					e.target.reset()
+				}
 			})
+			.catch(error => {
+				console.error(error)
+			})
+
+		e.preventDefault();
 	}
 
 	return (
@@ -62,14 +62,13 @@ const AddProgram = () => {
 					</div>
 					<div className="row p-5">
 						<div className="col-md-8 text-white">
-							<form action="" onSubmit={handleSubmit(onSubmit)}>
+							<form action="" onSubmit={handleSubmit}>
 								<input type="text" name="name" placeholder="Program Name" onBlur={handleBlur} className="input-field mb-3" required /><br />
 								<input type="text" name="title" placeholder="Program title" onBlur={handleBlur} className="input-field mb-3" required /><br />
 								<input type="text" name="description" placeholder="Description" onBlur={handleBlur} className="input-field mb-3" required /><br />
-								<input type="text" name="area" placeholder="please write this format- areaName1, areaName2 " onBlur={handleBlur} className="input-field mb-3" required /><br />
-								<input type="text" name="address" placeholder="Address" onBlur={handleBlur} className="input-field mb-3" required /><br />
-								<label className="text-dark">Select files: {" "}
-									<input type="file" name="myfile" onChange={handleFileChange} />
+								<input type="text" name="area" placeholder="Write place name and give a comma between them" onBlur={handleBlur} className="input-field mb-3" required /><br />
+								<label className="text-dark">Select an image: {" "}
+									<input type="file" onChange={handleFileChange} />
 								</label><br />
 								<button className="btn btn-outline-success mt-2" type="submit">Register</button>
 							</form>

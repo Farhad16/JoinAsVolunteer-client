@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../App';
 import AdminSidebar from '../../Shared/Sidebar/AdminSidebar';
 import DisplayCustomerService from '../DisplayCustomerService/DisplayCustomerService';
-import './AdminControlPrograms.css';
+import './AdminControlRegistration.css';
 import axios from 'axios';
 
-const AdminControlServices = () => {
+const AdminControlRegistration = () => {
 	const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 	const [registerData, setRegisterData] = useState([])
 
@@ -111,4 +111,4 @@ const AdminControlServices = () => {
 	);
 };
 
-export default AdminControlServices;
+export default AdminControlRegistration;

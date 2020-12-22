@@ -7,7 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './components/Home/Home/Home';
-import AdminControlServices from './components/AdminDashboard/AdminControlPrograms/AdminControlPrograms';
+import AdminControlRegistration from './components/AdminDashboard/AdminControlRegistration/AdminControlRegistration';
 import AddService from './components/AdminDashboard/AddProgram/AddProgram';
 import MakeAdmin from './components/AdminDashboard/MakeAdmin/MakeAdmin';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -18,7 +18,10 @@ import axios from 'axios';
 import Alert from './components/AdminDashboard/Alert/Alert';
 import VolunteerRegister from './components/VolunteerDashboard/VolunteerRegister/VolunteerRegister';
 import VolunteerAlreadyRegister from './components/VolunteerDashboard/VolunteerAlreadyRegister/VolunteerAlreadyRegister';
-
+import AdminControlProgram from './components/AdminDashboard/AdminControlProgram/AdminControlProgram';
+import Programs from './components/Home/Programs/Programs';
+import Footer from './components/Home/Footer/Footer';
+import ScrollToTop from "react-scroll-to-top";
 
 export const UserContext = createContext()
 
@@ -44,6 +47,7 @@ function App() {
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
+        <ScrollToTop smooth color='#ffffff' fontWeight='bold' />
         <Navbar></Navbar>
         <Switch>
           <Route exact path={["/home", "/"]}>
@@ -65,7 +69,7 @@ function App() {
           <PrivateRoute path="/dashboard">
             {
               admin ?
-                < AdminControlServices />
+                < AdminControlRegistration />
                 :
                 <VolunteerAlreadyRegister />
 
@@ -80,10 +84,10 @@ function App() {
 
             }
           </PrivateRoute>
-          <PrivateRoute path="/admin/controlService">
+          <PrivateRoute path="/admin/controlVolunteer/registraion">
             {
               admin ?
-                <AdminControlServices />
+                <AdminControlRegistration />
                 : <Alert />
 
             }
@@ -104,8 +108,22 @@ function App() {
 
             }
           </PrivateRoute>
+          <PrivateRoute path="/admin/control/programs">
+            {
+              admin ?
+                <AdminControlProgram />
+                : <Alert />
+
+            }
+          </PrivateRoute>
           <Route path="/accessAdmin">
             <MakeAdmin />
+          </Route>
+          <Route path="/programs">
+            <Programs />
+          </Route>
+          <Route path="/contact">
+            <Footer />
           </Route>
           <Route path="*">
             <NotFound></NotFound>

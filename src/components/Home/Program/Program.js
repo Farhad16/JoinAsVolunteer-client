@@ -30,10 +30,7 @@ const Program = ({ program }) => {
 						<h6 className="my-2 text-dark">{title}</h6>
 						<p className="my-2 text-dark ">
 							<small className="font-weight-bold">
-								Volunteer Location:{" "}
-								{
-									area.map((area, i) => <span key={i}>{area}{", "}</span>)
-								}
+								Volunteer Location: {area}
 							</small>
 						</p>
 						<button className="btn btn-success" onClick={() => setId(title, img, image)}>Register</button>

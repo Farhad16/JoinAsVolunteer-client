@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHdd, faUserPlus, faPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHdd, faUserPlus, faPlus, faSignOutAlt, faIdCardAlt, faIdCard, faPlusSquare, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../../../App';
 
 const AdminSidebar = () => {
@@ -15,10 +15,10 @@ const AdminSidebar = () => {
       <ul className="list-unstyled">
         <div className="pt-5">
           <li>
-            <Link to="/admin/controlService"
-              className={(location.pathname === "/admin/controlService" || location.pathname === "/dashboard") ? "text-dark pl-3 active" : "text-dark pl-3"}
+            <Link to="/admin/controlVolunteer/registraion"
+              className={(location.pathname === "/admin/controlVolunteer/registraion" || location.pathname === "/dashboard") ? "text-dark pl-3 active" : "text-dark pl-3"}
             >
-              <FontAwesomeIcon icon={faHdd} />{" "}<span>Control Panel</span>
+              <FontAwesomeIcon icon={faIdCard} />{" "}<span>Control Registraion</span>
             </Link>
           </li>
 
@@ -26,10 +26,9 @@ const AdminSidebar = () => {
             <Link to="/admin/addService"
               className={location.pathname === "/admin/addService" ? "text-dark pl-3 active" : "text-dark pl-3"}
             >
-              <FontAwesomeIcon icon={faPlus} />{" "}<span>Add Program</span>
+              <FontAwesomeIcon icon={faPlusCircle} />{""}  <span>Add Program</span>
             </Link>
           </li>
-
           <li>
             <Link to="/admin/makeAdmin"
               className={location.pathname === "/admin/makeAdmin" ? "text-dark pl-3 active" : "text-dark pl-3"}
@@ -37,6 +36,15 @@ const AdminSidebar = () => {
               <FontAwesomeIcon icon={faUserPlus} />{" "}<span>Make Admin</span>
             </Link>
           </li>
+
+          <li>
+            <Link to="/admin/control/programs"
+              className={location.pathname === "/admin/control/programs" ? "text-dark pl-3 active" : "text-dark pl-3"}
+            >
+              <FontAwesomeIcon icon={faIdCard} />{" "}<span>Control Program</span>
+            </Link>
+          </li>
+
         </div>
       </ul>
 
