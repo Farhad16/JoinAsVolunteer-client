@@ -24,7 +24,7 @@ const Header = () => {
                                 </Typed>
                             </span>
                         </div>
-                        <Link to="/">Register Now </Link>
+                        <a href="#programs">Register Now </a>
                     </div>
                 </div>
             </section>

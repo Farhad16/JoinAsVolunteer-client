@@ -5,15 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHdd, faUserPlus, faPlus, faSignOutAlt, faIdCardAlt, faIdCard, faPlusSquare, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../../../App';
 
+
 const AdminSidebar = () => {
   const location = useLocation();
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
 
   return (
-    <aside className="sidebar d-flex flex-column justify-content-between pb-3 px-3">
+    <div className="row sidebar d-flex flex-column justify-content-between pb-3 px-3">
       <ul className="list-unstyled">
-        <div className="pt-5">
+        <div className="admin">
           <li>
             <Link to="/admin/controlVolunteer/registraion"
               className={(location.pathname === "/admin/controlVolunteer/registraion" || location.pathname === "/dashboard") ? "text-dark pl-3 active" : "text-dark pl-3"}
@@ -53,7 +54,7 @@ const AdminSidebar = () => {
           <FontAwesomeIcon icon={faSignOutAlt} />{" "}<span >Logout</span>
         </Link>
       </div>
-    </aside>
+    </div>
   );
 };
 

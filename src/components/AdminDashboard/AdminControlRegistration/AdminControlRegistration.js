@@ -72,7 +72,7 @@ const AdminControlRegistration = () => {
 					<AdminSidebar></AdminSidebar>
 				</div>
 
-				<div className="scroll-bhave col-md-9">
+				<div className="scroll-bhave col-md-9 adminControl">
 					<div className="scroll-bhave overflow-auto fontSize">
 						<table className="table-style table table-striped">
 							<thead>

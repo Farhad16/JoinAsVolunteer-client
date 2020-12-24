@@ -11,7 +11,7 @@ const Sidebar = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     return (
-        <aside className="sidebar d-flex flex-column justify-content-between pb-3 px-3">
+        <div className="sidebar d-flex flex-column justify-content-between pb-3 px-3">
             <ul className="list-unstyled">
                 <div className="pt-5">
                     <li>
@@ -35,7 +35,7 @@ const Sidebar = () => {
                     <FontAwesomeIcon icon={faSignOutAlt} />{" "}<span >Logout</span>
                 </Link>
             </div>
-        </aside>
+        </div>
     );
 };
 
